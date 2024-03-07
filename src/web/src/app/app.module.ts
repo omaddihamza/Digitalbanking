@@ -8,6 +8,12 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
+import { SignupThanksComponent } from './signup-thanks/signup-thanks.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 
 
@@ -19,13 +25,18 @@ import { AdminComponent } from './admin/admin.component';
     SignupComponent,
     UserComponent,
     AdminComponent,
+    SignupThanksComponent,
+    HomeComponent,
+    AboutComponent,
+    ContactComponent,
+    ProfileComponent,
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

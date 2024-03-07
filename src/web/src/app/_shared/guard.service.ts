@@ -17,18 +17,26 @@ export class GuardService {
       this.router.navigate(['']);
       return false;
     }
+  
+
     try {
-      const decodedToken: CustomJwtPayload = jwtDecode(token);
+      const decodedToken: any = jwtDecode(token);
       const userRole = decodedToken.roles[0].authority;
-      if (userRole === 'ADMIN' || userRole === 'USER') {
+
+      if (userRole === 'ADMIN' && state.url.startsWith('/admin')) {
+        return true;
+      } else if (userRole === 'USER' && state.url.startsWith('/user')) {
         return true;
       } else {
-        this.router.navigate(['']);
+        this.router.navigate(['']); // Redirect to login for unauthorized access
         return false;
       }
     } catch (error) {
-      this.router.navigate(['']);
+      console.log('Token decoding error', error);
+      this.router.navigate(['']); // Redirect to login if token decoding fails
       return false;
     }
+
+    
   }
 }

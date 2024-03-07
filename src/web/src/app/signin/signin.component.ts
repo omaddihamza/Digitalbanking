@@ -13,8 +13,8 @@ import { TokenService } from '../_shared/token.service';
 })
 export class SigninComponent implements OnInit {
 
-
   signin = new Signin();
+  alert:boolean = false;
 
   constructor(private authService: AuthService, private router: Router, private tokenService:TokenService) { }
 
@@ -22,24 +22,28 @@ export class SigninComponent implements OnInit {
 
   }
 
-  OnSignin() {
+  OnSignin(){
     this.authService.signIn(this.signin).subscribe((response: SigninResponse) => {
       const token = response.accessToken;
       this.tokenService.setToken(token);
       const decodedToken = jwtDecode<CustomJwtPayload>(token);
       const userRole = decodedToken.roles[0].authority;
-      this.navigateBasedOnRole(userRole);
+      console.log(userRole)
+      setTimeout(() => { // Wrap the navigation inside setTimeout
+        this.navigateBasedOnRole(userRole);
+      },  0);
     },
       error => {
         console.log('Login Error', error);
+          this.alert = true;
       })
   }
 
   navigateBasedOnRole(userRole: string) {
     if (userRole === 'ADMIN') {
-      this.router.navigate(['admin']);
+      this.router.navigate(['/admin']);
     } else if (userRole === 'USER') {
-      this.router.navigate(['user']);
+      this.router.navigate(['/user']);
     }
   }
 

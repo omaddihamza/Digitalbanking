@@ -1,0 +1,39 @@
+a {
+  text-decoration: none;
+  font-weight: 500;
+  padding-right: 2vw;
+  color: black;
+}
+
+button {
+  border: none;
+  border-radius: 28px;
+  background-color: rgb(255, 196, 0);
+  padding: 1.5vh 2.5vw;
+  color: white;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: rgb(240, 176, 0);
+}
+
+.title {
+  position: absolute;
+  top: 28vh;
+  left: 8vw;
+}
+
+.title h4 {
+  max-width: 31vw;
+  font-family: serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 6vw;
+  color: #6a6868
+}
+
+.title p {
+  font-size: 1.4vw;
+  max-width: 26vw;
+}

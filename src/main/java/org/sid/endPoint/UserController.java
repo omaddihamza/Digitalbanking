@@ -19,7 +19,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
     @GetMapping("/users")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<List<UserEntity>> userList() {

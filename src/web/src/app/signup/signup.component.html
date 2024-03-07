@@ -1,53 +1,37 @@
-<div class="parent">
-    <div class="div1"> 
-        <div style="background-color: bisque; height: 95vh;">
 
-        </div>
-    </div>
-    <div class="div2"> 
-        <div>
+<div>
+      
+    <div class="signup-form"> 
+        <div  style="display: flex; flex-direction: column; justify-content: center; align-items: center; height:100%;">
             <div>
-                <h4 class="font-weight-bolder">Sign Up</h4>
-                <p class="mb-0">Enter your email and password to register</p>
+                <h1 style="font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-align: center;">Sign Up</h1>
+                <p class="mb-0">Enter your details to create your account</p>
             </div>
             <div>
-                <form >
-                    <div>
-                        <label class="form-label">First Name</label>
-                        <input type="text" class="form-control">
+                <form #form="ngForm" (ngSubmit)="onSignup()">
+                    <div class="input-container" style="display: flex;flex-direction: column;">
+                        <input type="text"  placeholder="Username" [(ngModel)]="signup.username" name="username" class="username-input" #name="ngModel" required>
+                        <span *ngIf="name.touched && name.invalid">you should to insert username</span>
                     </div>
-                    <div>
-                        <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control">
+                    <div style="display: flex;flex-direction: column;">
+                        <input type="email" placeholder="Email" [(ngModel)]="signup.email" name="email" class="email-input" #email="ngModel" email required>
                     </div>
-                    <div>
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control">
-                    </div>
-                    <div>
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control">
+                    <div style="display: flex;flex-direction: column;">
+                        <input type="password" placeholder="Password" [(ngModel)]="signup.password" name="password" class="password-input" #password="ngModel" required>
                     </div>
                     
-                    <div class="form-check form-check-info text-start ps-0 mt-2">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked="">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and
-                                Conditions</a>
-                        </label>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign
-                            Up</button>
+                    <div class="">
+                        <button type="submit" class="" [disabled]="form.invalid" >Sign Up</button>
                     </div>
                 </form>
             </div>
-            <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                <p class="mb-2 text-sm mx-auto">
+            <div class="" style="margin-top:4vh ; font-size: 1.2vw; text-align: center;">
+                <p class="mb-2 text-sm mx-auto" style="font-weight: 600;">
                     Already have an account?
-                    <a href="" class="text-primary text-gradient font-weight-bold">Sign in</a>
+                    <button (click)="goToSignIn()" style="color:rgb(255, 196, 0); font-weight: 600; text-decoration: underline; border: none; background-color: white;">Sign in</button>
                 </p>
             </div>
         </div>
     </div>
+
 </div>

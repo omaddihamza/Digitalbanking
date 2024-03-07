@@ -1,5 +1,5 @@
 # Utiliser une image Node.js
-FROM node:18.17.1
+FROM node:18.17.1 AS builder
 # Set the working directory
 WORKDIR /app
 # Copy package.json and package-lock.json
@@ -10,7 +10,16 @@ RUN npm install
 COPY . .
 # Build the Angular application
 RUN npm run build
-# le port sur lequel votre application écoute
-EXPOSE 4200
+
+
+# Stage 2 - Setup NGINX
+FROM nginx:latest
+
+# Copy build from previous stage
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose port
+EXPOSE 80
+
 # Définir la commande à exécuter lorsque le conteneur démarre
-CMD ["npm", "start"]
+CMD ["nginx", "-g", "daemon off;"]

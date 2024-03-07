@@ -20,7 +20,6 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     private JWTGenerator tokenGenerator;
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
          String token = getJWTFormRequest(request);
